@@ -134,6 +134,8 @@ This section will provide instructions on how to run the different modules and s
 .
 ├── Operational_imputation_and_calibration/  # Code for imputation and calibration models
 │   ├── calibration_models/                  # Stored calibration models (ignored by .gitignore)
+│   ├── graph_data/                          # Pytorch graphs (ignored by .gitignore)
+│   ├── plots/                               # Imputation plots (ignored by .gitignore)
 │   ├── predictions/                         # Prediction outputs (ignored by .gitignore)
 │   ├── generate_graphs_historical.py
 │   ├── historical_calibration.py
@@ -156,6 +158,18 @@ This section will provide instructions on how to run the different modules and s
 └── README.md                                # Project overview (this file)
 ```
 
+## 👥 Environmental Informatics Research GROUP (EIRG)
+
+The Environmental Informatics Research Group (EIRG) at Aristotle University of Thessaloniki is dedicated to advancing environmental monitoring and modeling through innovative computational approaches.
+
+### Members
+
+*   **Prof. Kostas Karatzas, Eng.** (Group Leader) - kkara(at)auth.gr
+*   **Dr. Theodosios Kassandros** (Post-doc) - teokassa@gmail.com
+*   **Dr. Evangelos Bagkis** (Post-doc) - evanbagis@gmail.com
+*   **Lamprini Adamopoulou** (PhD Candidate) - lambriniadam(at)gmail.com
+*   **Rania Gkavezou** (PhD Candidate) - raniagkavezou(at)gmail.com
+
 ## 🤝 Contributing
 
 We welcome contributions to the EnviTwin project! Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) (if available) for guidelines on how to submit issues, propose features, and make pull requests.
@@ -166,4 +180,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-For any inquiries or support, please contact [Evangelos Bagkis/evanbagis@gmail.com/Aristotle University of Thessaloniki] or [Theodosios Kassandros/teokassa@gmail.com/Aristotle University of Thessaloniki]
+For any inquiries or support, please contact [Evangelos Bagkis/evanbagis@gmail.com/Aristotle University of Thessaloniki]
