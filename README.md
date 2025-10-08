@@ -47,8 +47,9 @@ EnviTwin proposes an innovative Environmental Digital Twin for smart cities, des
 
 This repository focuses on significant advancements in:
 
-*   **LCAQSN Calibration:** Utilizing Graph Neural Networks (GNNs) to capture spatiotemporal relationships for on-site calibration of LCAQSN, addressing a gap in current methodologies (SO3, TO3). GNNs are particularly suited for the non-Euclidean, non-linear, distributed, and sparse nature of sensor networks.
-*   **Data Fusion:** Employing novel methodologies based on Gaussian Processes (GPs), a generalization of Kriging, for fusing heterogeneous environmental and traffic data. This approach, accelerated with GPU computations and Deep Kernel Learning, aims to overcome limitations of traditional geostatistical methods in achieving ultra-high spatial resolution and computational efficiency (SO3, TO5).
+*   **Urban characteristics (LULC):** Utilizes a custom **UNet** model for semantic segmentation of satellite imagery, incorporating Sentinel-1/2 bands, various derived indices (e.g., NDVI, NDBI, BSI, GCI, MSI, NDWI), and building height data. The model is trained using K-Fold cross-validation with **FocalLoss** to accurately classify land use and land cover.
+*   **LCAQSN Calibration:** Employs advanced **Graph Neural Networks (GNNs)**, specifically various **TemporalGCN** models with **TransformerConv** layers, for the on-site calibration of low-cost air quality sensor networks. These models build dynamic graphs based on either Pearson correlation between stations or geographic distance, handling multiple pollutants (PM2.5, PM10, NO2, O3, CO) and trained with **HuberLoss**. The system supports incremental training on historical data and operational real-time updates.
+*   **Data Fusion:** Integrates **Gaussian Processes (GPs)** with neural network parameterized kernels for spatial modeling and disaggregation of environmental data. Additionally, **Ordinary Kriging** is used for geostatistical interpolation, combining high and low-resolution maps with fixed measurements and dynamic city characteristics to achieve street-level resolution. 
 
 ## 🔄 EnviTwin Framework Flow
 
@@ -58,12 +59,9 @@ The EnviTwin framework operates through a 10-step information feedback loop:
 2.  **Data Pipelines:** Automated data collection to a central server.
 3.  **Preprocessing:** Missing data handling, noise removal, feature engineering, and downscaling.
 4.  **Infrastructure:** Management of databases and access points for datasets.
-5.  **ML Task 1 (Calibration):** On-site calibration of LCAQSN via expressive spatiotemporal GNN models.
-6.  **ML Task 2 (Estimation):** Urban characteristics (LU/LC, LCZ) estimation from remote sensing data using SOTA tree-based ensemble algorithms.
-7.  **Numerical Modeling:** Meteorological (UHI) and chemical transport (UPI) models provide the first representation layer at regional resolution.
-8.  **Validation:** Data quality assurance for all estimated datasets.
-9.  **Data Fusion:** Spatial disaggregation of UHI and UPI data to urban scale based on spatiotemporal and covariate correlations.
-10. **Propagation & Pilots:** New representation layer propagation enables pilot implementations like green routing and dose response maps, closing the information loop.
+5.  **ML Task 1 (LULC Estimation):** Estimation of urban characteristics (Land Use/Land Cover, Local Climate Zones) from remote sensing data using SOTA Unet models.
+6.  **ML Task 2 (Imputation & Calibration):** On-site calibration of LCAQSN via expressive spatiotemporal GNN models and imputation of missing data.
+7.  **ML Task 3 (Fusion & Downscaling):** Spatial disaggregation of UHI and UPI data to urban scale based on spatiotemporal and covariate correlations, utilizing Gaussian Processes and geostatistical methods.
 
 ## 📊 Datasets
 
@@ -79,7 +77,7 @@ The project utilizes a variety of heterogeneous datasets, including:
 The core of EnviTwin's connection between the physical and digital worlds is an ML-driven atmospheric environment data fusion, comprising:
 
 *   **Innovative Sensor Network Calibration:** GNN-based calibration techniques, informed by urban mobility and heat stress, to improve the trustworthiness and data quality of LCAQSN.
-*   **Satellite-based LU/LC Estimations:** SOTA ensemble-based algorithms (e.g., random forests, xgboost) for reconstructing LU/LC raster maps from satellite imagery.
+*   **Satellite-based LU/LC Estimations:** SOTA **Unet** is used here for reconstructing LU/LC raster maps from satellite imagery.
 *   **Spatial Modeling for AQ Fusion:** Gaussian Processes (GPs) models, using kernels parameterized by neural networks, to combine high and low-resolution maps with fixed measurements, dynamic, and static city characteristics. This aims to disaggregate numerical model estimations (WRF, CAMx) to street-level resolution (~10m²).
 
 ## ⚙️ Installation
@@ -111,27 +109,26 @@ This section will provide instructions on how to run the different modules and s
 
 *   **To run the operational imputation script:**
     ```bash
-    python Operational_imputation_and_calibration/operational_imputation.py [arguments]
+    python Operational_imputation_and_calibration/operational_imputation.py
     ```
 *   **To run the historical calibration script:**
     ```bash
-    python Operational_imputation_and_calibration/historical_calibration.py [arguments]
+    python Operational_imputation_and_calibration/historical_calibration.py
     ```
-    *(Refer to the individual script files for specific command-line arguments and configuration details.)*
 
 ### Operational LULC
 
 *   **To run the LULC training/prediction script:**
     ```bash
-    python Operational_LULC/scripts/Unet_train_predict.py [arguments]
+    python Operational_LULC/scripts/Unet_train_predict.py
     ```
 *   **To create configuration files:**
     ```bash
-    python Operational_LULC/scripts/create_config.py [arguments]
+    python Operational_LULC/scripts/create_config.py
     ```
-    *(Refer to the individual script files for specific command-line arguments and configuration details.)*
 
 ## 📂 Project Structure
+
 
 ```
 .
@@ -143,11 +140,13 @@ This section will provide instructions on how to run the different modules and s
 │   ├── operational_calibration.py
 │   ├── operational_imputation.py
 │   ├── requirements.txt
-│   └── tst.ipynb                            # Test notebook (ignored by .gitignore)
 ├── Operational_LULC/                        # Code for Land Use/Land Cover estimation
+│   ├── auxiliary/                           # Stored building height (ignored by .gitignore)
 │   ├── config.json
 │   ├── labels/                              # Label files
 │   ├── models/                              # Stored LULC models (ignored by .gitignore)
+│   ├── plots/                               # Stored plots of the final predictions (ignored by .gitignore)
+│   ├── preds/                               # Stored final predictions (ignored by .gitignore)
 │   ├── scripts/
 │   │   ├── Unet_train_predict.py
 │   │   ├── create_config.py
@@ -155,7 +154,6 @@ This section will provide instructions on how to run the different modules and s
 │   └── .gitignore                           # Specific ignores for LULC module
 ├── .gitignore                               # Global ignore rules
 └── README.md                                # Project overview (this file)
-# ... other directories and files (e.g., Fusion, Operational_data_fusion, EnviTwin_venv - ignored)
 ```
 
 ## 🤝 Contributing
@@ -168,4 +166,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-For any inquiries or support, please contact [Your Name/Email/Organization].
+For any inquiries or support, please contact [Evangelos Bagkis/evanbagis@gmail.com/Aristotle University of Thessaloniki] or [Theodosios Kassandros/teokassa@gmail.com/Aristotle University of Thessaloniki]
