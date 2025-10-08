@@ -26,3 +26,11 @@ Fusion/
 *.csv
 *.pt
 *.pth
+
+!README_temp.md
+
+# Un-ignore specific images for README integration
+!imgs/EnviTwin_overview.png
+!imgs/KASTOM_nodes_map.png
+!imgs/bulding_height_thessaloniki.png
+!imgs/logo.jpg
