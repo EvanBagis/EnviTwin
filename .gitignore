@@ -3,5 +3,5 @@
 
 # Un-ignore specific directories
 !Operational_imputation_and_calibration/
-!ENVITWIN_LULC/
+!Operational_LULC/
 !.gitignore
