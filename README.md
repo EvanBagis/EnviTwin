@@ -86,6 +86,12 @@ The core of EnviTwin's connection between the physical and digital worlds is an 
 *   **Satellite-based LU/LC Estimations:** SOTA **Unet** is used here for reconstructing LU/LC raster maps from satellite imagery.
 *   **Spatial Modeling for AQ Fusion:** Gaussian Processes (GPs) models, using kernels parameterized by neural networks, to combine high and low-resolution maps with fixed measurements, dynamic, and static city characteristics. This aims to disaggregate numerical model estimations (WRF, CAMx) to street-level resolution (~10m²).
 
+## 📈 LULC Results
+
+This section presents the results obtained from the Land Use/Land Cover (LULC) classification using the custom UNet model. The image below illustrates a sample output of the LULC prediction.
+
+![LULC Unet Results](imgs/LULC_unet.png)
+
 ## ⚙️ Installation
 
 To set up the project locally, follow these steps:
