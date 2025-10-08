@@ -48,10 +48,16 @@ EnviTwin proposes an innovative Environmental Digital Twin for smart cities, des
 This repository focuses on significant advancements in:
 
 *   **Urban characteristics (LULC):** Utilizes a custom **UNet** model for semantic segmentation of satellite imagery, incorporating Sentinel-1/2 bands, various derived indices (e.g., NDVI, NDBI, BSI, GCI, MSI, NDWI), and building height data. The model is trained using K-Fold cross-validation with **FocalLoss** to accurately classify land use and land cover.
+    ![LULC Unet Architecture](imgs/LULC_Unet_Architecture.png)
 *   **LCAQSN Calibration:** Employs advanced **Graph Neural Networks (GNNs)**, specifically various **TemporalGCN** models with **TransformerConv** layers, for the on-site calibration of low-cost air quality sensor networks. These models build dynamic graphs based on either Pearson correlation between stations or geographic distance, handling multiple pollutants (PM2.5, PM10, NO2, O3, CO) and trained with **HuberLoss**. The system supports incremental training on historical data and operational real-time updates.
+    ![LCAQSN Calibration GNN Architecture](imgs/LCAQSN_Calibration_GNN_Architecture.png)
 *   **Data Fusion:** Integrates **Gaussian Processes (GPs)** with neural network parameterized kernels for spatial modeling and disaggregation of environmental data. Additionally, **Ordinary Kriging** is used for geostatistical interpolation, combining high and low-resolution maps with fixed measurements and dynamic city characteristics to achieve street-level resolution. 
+    ![Data Fusion GP Concept](imgs/Data_Fusion_GP_Concept.png)
 
 ## 🔄 EnviTwin Framework Flow
+
+![EnviTwin Framework Flow](imgs/EnviTwin_Framework_Flow.png)
+
 
 The EnviTwin framework operates through a 10-step information feedback loop:
 
@@ -164,15 +170,11 @@ The Environmental Informatics Research Group (EIRG) at Aristotle University of T
 
 ### Members
 
-*   **Prof. Kostas Karatzas, Eng.** (Group Leader) - kkara(at)auth.gr
+*   **Prof. Kostas Karatzas, Eng.** (Group Leader) - kkara@auth.gr
 *   **Dr. Theodosios Kassandros** (Post-doc) - teokassa@gmail.com
 *   **Dr. Evangelos Bagkis** (Post-doc) - evanbagis@gmail.com
-*   **Lamprini Adamopoulou** (PhD Candidate) - lambriniadam(at)gmail.com
-*   **Rania Gkavezou** (PhD Candidate) - raniagkavezou(at)gmail.com
-
-## 🤝 Contributing
-
-We welcome contributions to the EnviTwin project! Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) (if available) for guidelines on how to submit issues, propose features, and make pull requests.
+*   **Lamprini Adamopoulou** (PhD Candidate) - lambriniadam@gmail.com
+*   **Rania Gkavezou** (PhD Candidate) - raniagkavezou@gmail.com
 
 ## 📄 License
 
