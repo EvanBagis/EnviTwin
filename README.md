@@ -1,3 +1,5 @@
+![EnviTwin Logo](imgs/logo.jpg)
+
 # EnviTwin: Environmental Digital Twin for Smart Cities
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -48,16 +50,14 @@ EnviTwin proposes an innovative Environmental Digital Twin for smart cities, des
 This repository focuses on significant advancements in:
 
 *   **Urban characteristics (LULC):** Utilizes a custom **UNet** model for semantic segmentation of satellite imagery, incorporating Sentinel-1/2 bands, various derived indices (e.g., NDVI, NDBI, BSI, GCI, MSI, NDWI), and building height data. The model is trained using K-Fold cross-validation with **FocalLoss** to accurately classify land use and land cover.
-    ![LULC Unet Architecture](imgs/LULC_Unet_Architecture.png)
+    ![Building Height Thessaloniki](imgs/bulding_height_thessaloniki.png)
 *   **LCAQSN Calibration:** Employs advanced **Graph Neural Networks (GNNs)**, specifically various **TemporalGCN** models with **TransformerConv** layers, for the on-site calibration of low-cost air quality sensor networks. These models build dynamic graphs based on either Pearson correlation between stations or geographic distance, handling multiple pollutants (PM2.5, PM10, NO2, O3, CO) and trained with **HuberLoss**. The system supports incremental training on historical data and operational real-time updates.
-    ![LCAQSN Calibration GNN Architecture](imgs/LCAQSN_Calibration_GNN_Architecture.png)
+    ![KASTOM Nodes Map](imgs/KASTOM_nodes_map.png)
 *   **Data Fusion:** Integrates **Gaussian Processes (GPs)** with neural network parameterized kernels for spatial modeling and disaggregation of environmental data. Additionally, **Ordinary Kriging** is used for geostatistical interpolation, combining high and low-resolution maps with fixed measurements and dynamic city characteristics to achieve street-level resolution. 
-    ![Data Fusion GP Concept](imgs/Data_Fusion_GP_Concept.png)
 
 ## 🔄 EnviTwin Framework Flow
 
-![EnviTwin Framework Flow](imgs/EnviTwin_Framework_Flow.png)
-
+![EnviTwin Framework Flow](imgs/EnviTwin_overview.png)
 
 The EnviTwin framework operates through a 10-step information feedback loop:
 
