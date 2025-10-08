@@ -1,7 +1,28 @@
-# Ignore everything
-*
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python/
+venv/
+.venv/
+env/
+.env/
 
-# Un-ignore specific directories
-!Operational_imputation_and_calibration/
-!Operational_LULC/
-!.gitignore
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# OS generated files
+.DS_Store
+.Trashes
+Thumbs.db
+
+# Specific project ignores
+\[x\] ENVITWIN_LULC/
+EnviTwin_venv/
+plots/
+Fusion/
+*.tif
+*.csv
+*.pt
+*.pth

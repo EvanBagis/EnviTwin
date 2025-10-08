@@ -1,0 +1,23 @@
+{
+    "client_ID": "sh-0f947091-c7b3-43c5-8c1f-07c03da3bae7",
+    "client_secret": "oISz9fmQJ1qleO7u6CsgHcTUZZmZbflD",
+    "mosaickingOrderS2": "leastCC",
+    "mosaickingOrderS1": "mostRecent",
+    "resolution": 10,
+    "S2_time_interval": [
+        "2025-09-01",
+        "2025-10-08"
+    ],
+    "S1_time_interval": [
+        "2025-09-18",
+        "2025-09-20"
+    ],
+    "bboxes": [
+        [
+            22.815966388989274,
+            40.5461501866596,
+            23.01825285288775,
+            40.707953967477884
+        ]
+    ]
+}
