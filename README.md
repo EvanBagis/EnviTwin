@@ -17,6 +17,20 @@ EnviTwin proposes an innovative Environmental Digital Twin for smart cities, des
 *   Fuse heterogeneous data sources using advanced methods to reveal areas of increased thermal and respiratory risk at street level.
 *   Continuously update models through a feedback loop for real-world case studies.
 
+## 🔄 EnviTwin Framework Flow
+
+![EnviTwin Framework Flow](imgs/EnviTwin_overview.png)
+
+The EnviTwin framework operates through a 10-step information feedback loop:
+
+1.  **Data Collection:** Datasets are collected and aggregated to hourly resolution.
+2.  **Data Pipelines:** Automated data collection to a central server.
+3.  **Preprocessing:** Missing data handling, noise removal, feature engineering, and downscaling.
+4.  **Infrastructure:** Management of databases and access points for datasets.
+5.  **ML Task 1 (LULC Estimation):** Estimation of urban characteristics (Land Use/Land Cover, Local Climate Zones) from remote sensing data using SOTA Unet models.
+6.  **ML Task 2 (Imputation & Calibration):** On-site calibration of LCAQSN via expressive spatiotemporal GNN models and imputation of missing data.
+7.  **ML Task 3 (Fusion & Downscaling):** Spatial disaggregation of UHI and UPI data to urban scale based on spatiotemporal and covariate correlations, utilizing Gaussian Processes and geostatistical methods.
+
 ## 🎯 Objectives and Challenges
 
 ### Scientific Objectives
@@ -55,19 +69,7 @@ This repository focuses on significant advancements in:
     ![KASTOM Nodes Map](imgs/KASTOM_nodes_map.png)
 *   **Data Fusion:** Integrates **Gaussian Processes (GPs)** with neural network parameterized kernels for spatial modeling and disaggregation of environmental data. Additionally, **Ordinary Kriging** is used for geostatistical interpolation, combining high and low-resolution maps with fixed measurements and dynamic city characteristics to achieve street-level resolution. 
 
-## 🔄 EnviTwin Framework Flow
 
-![EnviTwin Framework Flow](imgs/EnviTwin_overview.png)
-
-The EnviTwin framework operates through a 10-step information feedback loop:
-
-1.  **Data Collection:** Datasets are collected and aggregated to hourly resolution.
-2.  **Data Pipelines:** Automated data collection to a central server.
-3.  **Preprocessing:** Missing data handling, noise removal, feature engineering, and downscaling.
-4.  **Infrastructure:** Management of databases and access points for datasets.
-5.  **ML Task 1 (LULC Estimation):** Estimation of urban characteristics (Land Use/Land Cover, Local Climate Zones) from remote sensing data using SOTA Unet models.
-6.  **ML Task 2 (Imputation & Calibration):** On-site calibration of LCAQSN via expressive spatiotemporal GNN models and imputation of missing data.
-7.  **ML Task 3 (Fusion & Downscaling):** Spatial disaggregation of UHI and UPI data to urban scale based on spatiotemporal and covariate correlations, utilizing Gaussian Processes and geostatistical methods.
 
 ## 📊 Datasets
 

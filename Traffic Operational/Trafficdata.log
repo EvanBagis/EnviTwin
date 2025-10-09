@@ -1,0 +1,36 @@
+2025-10-08 19:55:22,855 ERROR Failed to load ROADS: Traceback (most recent call last):
+  File "/tmp/ipykernel_684327/2086324341.py", line 347, in main_once_load_roads
+    load_roads_to_collection(ROADS_SHP_PATH)
+  File "/tmp/ipykernel_684327/2086324341.py", line 116, in load_roads_to_collection
+    gdf = gpd.read_file(shp_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/envitwin/Desktop/venvs/databases/db_venv/lib/python3.12/site-packages/geopandas/io/file.py", line 294, in _read_file
+    return _read_file_pyogrio(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/envitwin/Desktop/venvs/databases/db_venv/lib/python3.12/site-packages/geopandas/io/file.py", line 547, in _read_file_pyogrio
+    return pyogrio.read_dataframe(path_or_bytes, bbox=bbox, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/envitwin/Desktop/venvs/databases/db_venv/lib/python3.12/site-packages/pyogrio/geopandas.py", line 265, in read_dataframe
+    result = read_func(
+             ^^^^^^^^^^
+  File "/home/envitwin/Desktop/venvs/databases/db_venv/lib/python3.12/site-packages/pyogrio/raw.py", line 198, in read
+    return ogr_read(
+           ^^^^^^^^^
+  File "pyogrio/_io.pyx", line 1240, in pyogrio._io.ogr_read
+  File "pyogrio/_io.pyx", line 220, in pyogrio._io.ogr_open
+pyogrio.errors.DataSourceError: /home/envitwin/Desktop/venvs/databases/data/Traffic/Roads_GTA_new.shp: No such file or directory
+
+2025-10-08 19:56:24,567 ERROR Failed to load ROADS: Traceback (most recent call last):
+  File "/tmp/ipykernel_684327/3777503155.py", line 347, in main_once_load_roads
+    load_roads_to_collection(ROADS_SHP_PATH)
+  File "/tmp/ipykernel_684327/3777503155.py", line 125, in load_roads_to_collection
+    raise RuntimeError(f"ROADS shapefile missing required field: '{f}'")
+RuntimeError: ROADS shapefile missing required field: 'Link_id'
+
+2025-10-08 19:59:30,698 ERROR Failed to load ROADS: Traceback (most recent call last):
+  File "/tmp/ipykernel_684327/3586601012.py", line 347, in main_once_load_roads
+    load_roads_to_collection(ROADS_SHP_PATH)
+  File "/tmp/ipykernel_684327/3586601012.py", line 125, in load_roads_to_collection
+    raise RuntimeError(f"ROADS shapefile missing required field: '{f}'")
+RuntimeError: ROADS shapefile missing required field: 'Link_id'
+
